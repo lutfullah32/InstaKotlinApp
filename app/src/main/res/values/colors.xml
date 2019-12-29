@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#fafafa</color>
     <color name="colorPrimaryDark">#f0f0f0</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="toolbar">#fafafa</color>
+    <color name="colorAccent">#3997f0</color>
     <color name="colorGolge">#dbdbdb</color>
     <color name="siyah">#000</color>
     <color name="beyaz">#fff</color>
