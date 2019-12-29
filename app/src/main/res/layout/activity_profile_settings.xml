@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile.ProfileSettingsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profileSettingRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tvAyarlar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Ayarlar"
+            android:textAlignment="center"
+            android:textColor="@color/siyah"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+            app:layout_constraintStart_toEndOf="@+id/imgBack"
+            app:layout_constraintTop_toTopOf="@+id/imgBack" />
+
+        <View
+            android:id="@+id/sgolgelik"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGolge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAyarlar">
+
+        </View>
+
+        <TextView
+            android:id="@+id/tvHesapAyarlari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Hesap Ayarları"
+            android:textColor="@color/siyah"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgolgelik" />
+
+        <TextView
+            android:id="@+id/tvProfilDuzenleHesapAyarlari"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Profili Düzenle"
+            android:textColor="@color/siyah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvHesapAyarlari"
+            app:layout_constraintTop_toBottomOf="@+id/tvHesapAyarlari" />
+
+        <TextView
+            android:id="@+id/tvBegendiginGonderiler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Beğendiğin Gönderiler"
+            android:textColor="@color/siyah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvProfilDuzenleHesapAyarlari"
+            app:layout_constraintTop_toBottomOf="@+id/tvProfilDuzenleHesapAyarlari" />
+
+        <TextView
+            android:id="@+id/tvSifreDegistir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Şifremi Değiştir"
+            android:textColor="@color/siyah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvBegendiginGonderiler"
+            app:layout_constraintTop_toBottomOf="@+id/tvBegendiginGonderiler" />
+
+        <TextView
+            android:id="@+id/tvKaydedilenler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Kaydedilenler"
+            android:textColor="@color/siyah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvSifreDegistir"
+            app:layout_constraintTop_toBottomOf="@+id/tvSifreDegistir" />
+
+        <TextView
+            android:id="@+id/tvGizliHesap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Gizli Hesap"
+            android:textColor="@color/siyah"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvKaydedilenler"
+            app:layout_constraintTop_toBottomOf="@+id/tvKaydedilenler" />
+
+        <TextView
+            android:id="@+id/tvGecmisSil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Arama Geçmişini Sil"
+            android:textColor="@color/mavi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvGizliHesap"
+            app:layout_constraintTop_toBottomOf="@+id/tvGizliHesap" />
+
+        <TextView
+            android:id="@+id/tvCikis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Çıkış"
+            android:textColor="@color/mavi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvGecmisSil"
+            app:layout_constraintTop_toBottomOf="@+id/tvGecmisSil"
+            tools:ignore="UnknownId" />
+
+        <View
+            android:id="@+id/boottomNavigationsgolgelik"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGolge"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </View>
+
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navigation_menu">
+
+        </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <FrameLayout
+        android:id="@+id/profileSettingsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
