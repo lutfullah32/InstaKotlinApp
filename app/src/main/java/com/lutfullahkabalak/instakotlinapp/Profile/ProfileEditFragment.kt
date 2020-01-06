@@ -30,7 +30,7 @@ class ProfileEditFragment : Fragment() {
 
         circleProfileImage = view.circleProfileImage
 
-        initImageLoader()
+
         setupProfilePicture()
 
         view.imgClose.setOnClickListener {
@@ -42,14 +42,7 @@ class ProfileEditFragment : Fragment() {
         return view
     }
 
-    private fun initImageLoader(){
 
-        var universalImageLoader= activity?.let { UniversalImageLoader(it) }
-        if (universalImageLoader != null) {
-            ImageLoader.getInstance().init(universalImageLoader.config)
-        }
-
-    }
 
     private fun setupProfilePicture() {
         //https://www.technopat.net/wp-content/uploads/2013/01/google-android-maskot.png

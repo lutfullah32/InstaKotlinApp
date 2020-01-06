@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.view.View
 import com.lutfullahkabalak.instakotlinapp.R
 import com.lutfullahkabalak.instakotlinapp.utils.BottomnavigationViewHelper
+import com.lutfullahkabalak.instakotlinapp.utils.UniversalImageLoader
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_profile.*
 
 
 class ProfileActivity : AppCompatActivity() {
+
 
     private val ACTIVITY_NO=4
     private val TAG="ProfileActivity"
@@ -18,9 +21,17 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+
+        setupProfilePhoto()
+
         setupToolbar()
 
         setupNavigationView()
+    }
+
+    private fun setupProfilePhoto() {
+        var imgURL="https://www.freepnglogos.com/uploads/android-logo-png/android-logo-0.png"
+        UniversalImageLoader.setImage(imgURL,circleProfileImage,progressBar,"")
     }
 
     private fun setupToolbar() {

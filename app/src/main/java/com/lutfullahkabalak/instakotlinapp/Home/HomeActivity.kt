@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.lutfullahkabalak.instakotlinapp.R
 import com.lutfullahkabalak.instakotlinapp.utils.BottomnavigationViewHelper
 import com.lutfullahkabalak.instakotlinapp.utils.HomePagerAdapter
+import com.lutfullahkabalak.instakotlinapp.utils.UniversalImageLoader
+import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -16,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        initImageLoader()
         setupNavigationView()
         setupHomeViewPager()
     }
@@ -39,5 +42,14 @@ class HomeActivity : AppCompatActivity() {
 
         homeViewPager.adapter = homePagerAdapter
         homeViewPager.setCurrentItem(1)
+    }
+
+    private fun initImageLoader(){
+
+        var universalImageLoader= UniversalImageLoader(this)
+        if (universalImageLoader != null) {
+            ImageLoader.getInstance().init(universalImageLoader.config)
+        }
+
     }
 }
