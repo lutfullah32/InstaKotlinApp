@@ -47,9 +47,9 @@ class HomeActivity : AppCompatActivity() {
     private fun initImageLoader(){
 
         var universalImageLoader= UniversalImageLoader(this)
-        if (universalImageLoader != null) {
+        //if (universalImageLoader != null) {
             ImageLoader.getInstance().init(universalImageLoader.config)
-        }
+        //}
 
     }
 }

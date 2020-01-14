@@ -15,7 +15,7 @@ class MessageFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var view=inflater?.inflate(R.layout.fragment_message,container,false)
+        var view=inflater.inflate(R.layout.fragment_message,container,false)
         return view
 
     }

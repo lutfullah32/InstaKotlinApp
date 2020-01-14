@@ -1,16 +1,16 @@
 package com.lutfullahkabalak.instakotlinapp.Login
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.lutfullahkabalak.instakotlinapp.R
+import com.lutfullahkabalak.instakotlinapp.utils.EventbusDataEvents
 import kotlinx.android.synthetic.main.activity_register.*
+import org.greenrobot.eventbus.EventBus
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -102,14 +102,18 @@ class RegisterActivity : AppCompatActivity() {
                 transaction.addToBackStack("TelefonKoduGirFranmentEklendi")
                 transaction.commit()
 
+                EventBus.getDefault().postSticky(EventbusDataEvents.TelefonNoGonder(etGirisYontemi.text.toString()))
+
 
             }else{
                 loginRoot.visibility=View.GONE
                 loginContainer.visibility=View.VISIBLE
                 var transaction=supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.loginContainer,EmailGirisYontemiFragment())
+                transaction.replace(R.id.loginContainer,KayitFragment())
                 transaction.addToBackStack("EmailGirisYontemiFranmentEklendi")
                 transaction.commit()
+
+                EventBus.getDefault().postSticky(EventbusDataEvents.EmailGonder(etGirisYontemi.text.toString()))
             }
         }
     }
