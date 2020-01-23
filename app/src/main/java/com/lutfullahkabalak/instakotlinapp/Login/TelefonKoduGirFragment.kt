@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -39,12 +40,18 @@ class TelefonKoduGirFragment : Fragment() {
 
     var gelenKod = ""
 
+    lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
         var view= inflater.inflate(R.layout.fragment_telefon_kodu_gir, container, false)
+
+        progressBar = view.progressBarRegister
 
         view.tvKullaniciTelNo.setText(gelenTelNo)
 
@@ -52,6 +59,7 @@ class TelefonKoduGirFragment : Fragment() {
 
         view.btnTelKodIleri.setOnClickListener {
             if (gelenKod.equals(view.etOnayKodu.text.toString())){
+                EventBus.getDefault().postSticky(EventbusDataEvents.KayitBilgileriGonder(gelenTelNo,null,verificationID,gelenKod,false))
                 var transaction= activity!!.supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.loginContainer,KayitFragment())
                 transaction.addToBackStack("kayitFranmentEklendi")
@@ -61,14 +69,15 @@ class TelefonKoduGirFragment : Fragment() {
             }
         }
 
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            gelenTelNo, // Phone number to verify
+            60, // Timeout duration
+            TimeUnit.SECONDS, // Unit of timeout
+            this.activity!!, // Activity (for callback binding)
+            callbacks) // OnVerificationStateChangedCallbacks
 
 
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                gelenTelNo, // Phone number to verify
-                60, // Timeout duration
-                TimeUnit.SECONDS, // Unit of timeout
-                this.activity!!, // Activity (for callback binding)
-                callbacks) // OnVerificationStateChangedCallbacks
+
 
 
         return view
@@ -80,18 +89,25 @@ class TelefonKoduGirFragment : Fragment() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 gelenKod = credential.smsCode.toString()
+                Log.println(Log.INFO,"SMSKOD","GELEN KOD : "+gelenKod)
+                progressBar.visibility = View.INVISIBLE
+
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {
-
+                Log.println(Log.ERROR,"SMSHATA","HATA MESAJI : "+p0.message)
+                Toast.makeText(activity,p0.message,Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.INVISIBLE
             }
 
             override fun onCodeSent(
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
-
+                progressBar.visibility = View.VISIBLE
                 verificationID = verificationId
+                Log.println(Log.INFO,"VERIFICATION","VERIFICATION ID : "+verificationID)
+
 
             }
         }
@@ -100,8 +116,8 @@ class TelefonKoduGirFragment : Fragment() {
     }
 
     @Subscribe (sticky = true)
-    internal fun onTelefonEvent(telefonNo:EventbusDataEvents.TelefonNoGonder){
-        gelenTelNo = telefonNo.telNo
+    internal fun onTelefonEvent(kayitBilgileri:EventbusDataEvents.KayitBilgileriGonder){
+        gelenTelNo = kayitBilgileri.telNo!!
     }
 
     override fun onAttach(context: Context) {
