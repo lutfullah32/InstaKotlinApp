@@ -2,6 +2,7 @@ package com.lutfullahkabalak.instakotlinapp.Login
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -61,6 +62,11 @@ class KayitFragment : Fragment() {
         view.etSifre.addTextChangedListener(watcher)
         view.etKullaniciAdi.addTextChangedListener(watcher)
         progressBar = view.pbKullaniciKayit
+
+        view.tvGirisYap.setOnClickListener {
+            var intent = Intent(activity,LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
 
         view.btnGiris.setOnClickListener {
 

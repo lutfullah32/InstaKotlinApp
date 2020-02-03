@@ -1,5 +1,6 @@
 package com.lutfullahkabalak.instakotlinapp.Login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -16,6 +17,9 @@ import com.lutfullahkabalak.instakotlinapp.R
 import com.lutfullahkabalak.instakotlinapp.utils.EventbusDataEvents
 import kotlinx.android.synthetic.main.activity_register.*
 import org.greenrobot.eventbus.EventBus
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 
 class RegisterActivity : AppCompatActivity(), FragmentManager.OnBackStackChangedListener {
@@ -27,12 +31,15 @@ class RegisterActivity : AppCompatActivity(), FragmentManager.OnBackStackChanged
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        AppCenter.start(getApplication(), "f03070df-4b83-4823-b765-cb020f1d9409",
+                  Analytics::class.java)
 
         mRef = FirebaseDatabase.getInstance().reference
 
         manager = supportFragmentManager
         manager.addOnBackStackChangedListener(this)
         init()
+
     }
 
 
@@ -184,6 +191,12 @@ class RegisterActivity : AppCompatActivity(), FragmentManager.OnBackStackChanged
 
             }
         }
+
+        tvGirisYap.setOnClickListener {
+            var intent = Intent(this@RegisterActivity,LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
     }
 
     //override fun onBackPressed() {

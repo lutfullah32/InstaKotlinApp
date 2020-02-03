@@ -57,4 +57,9 @@ dependencies {
 
     //farebaseui
     implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+
+    //microsoft app center
+    def appCenterSdkVersion = '2.5.1'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
